@@ -1,10 +1,15 @@
 const express = require("express");
+const colors = require("colors");
 const dotenv = require("dotenv").config({ path: __dirname + "../../.env" });
 const { errorHandler } = require("./middleware/errorMiddleware");
-console.log(dotenv);
+const connectDB = require("./config/db");
+
 const port = process.env.PORT || 3000;
 
+connectDB();
+
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
