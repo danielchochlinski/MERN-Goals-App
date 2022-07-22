@@ -1,5 +1,9 @@
 import React, { useState, useEffects } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import authService from "../features/auth/authService";
+import { login, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner";
 const Login = () => {
   const [formValues, setFormValues] = useState({
     email: "",
@@ -7,6 +11,12 @@ const Login = () => {
   });
 
   const { email, password } = formValues;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +27,22 @@ const Login = () => {
   };
   console.log(formValues);
 
-  const onSubmit = () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(login(userData));
+  };
+
+  // if(isLoading ){ return <Spinner />}
   return (
     <>
       <section>
-        <h1>Login</h1>
-      `</section>
+        <h1>Login</h1>`
+      </section>
       <section>
         <form onSubmit={onSubmit}>
           <div>

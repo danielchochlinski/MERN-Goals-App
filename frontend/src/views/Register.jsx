@@ -1,5 +1,9 @@
 import React, { useState, useEffects } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import authService from "../features/auth/authService";
+import { register, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner";
 const Register = () => {
   const [formValues, setFormValues] = useState({
     name: "",
@@ -9,6 +13,27 @@ const Register = () => {
   });
 
   const { name, email, password, password2 } = formValues;
+  console.log(name);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  // useEffect(() => {
+  //   if (isError) {
+  //     //useContext for notification
+  //   }
+  //   if (isSuccess || user) {
+  //     navigate("/");
+  //     dispatch(reset());
+  //   }
+
+
+  //   if (isLoading) {
+  //   }
+  // }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +44,20 @@ const Register = () => {
   };
   console.log(formValues);
 
-  const onSubmit = () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      //dispatch error message from notification context later
+      return;
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+      dispatch(register(userData));
+    }
+  };
   return (
     <>
       <section>
