@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import authService from "../features/auth/authService";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import { useEffect } from "react";
 const Login = () => {
   const [formValues, setFormValues] = useState({
     email: "",
@@ -13,10 +14,14 @@ const Login = () => {
   const { email, password } = formValues;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   const onChange = (e) => {
     const { name, value } = e.target;

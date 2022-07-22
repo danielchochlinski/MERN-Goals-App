@@ -1,4 +1,4 @@
-import React, { useState, useEffects } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import authService from "../features/auth/authService";
@@ -21,19 +21,14 @@ const Register = () => {
     (state) => state.auth
   );
 
-  // useEffect(() => {
-  //   if (isError) {
-  //     //useContext for notification
-  //   }
-  //   if (isSuccess || user) {
-  //     navigate("/");
-  //     dispatch(reset());
-  //   }
-
-
-  //   if (isLoading) {
-  //   }
-  // }, [user, isError, isSuccess, message, navigate, dispatch]);
+  useEffect(() => {
+    if (isError) {
+      //useContext for notification
+    }
+    if (user) {
+      navigate("/");
+    }
+  }, [isError, navigate, user]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
