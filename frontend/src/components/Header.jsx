@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
+import "./Header.scss";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ const Header = () => {
   };
   return (
     <header className="header">
-      <div>
+      {/* <div>
         <Link to="/">GoalSettter</Link>
-      </div>
+      </div> */}
       <ul>
         {user ? (
           <li>
