@@ -1,4 +1,39 @@
 .goal_item {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  border-radius: 15px;
+  border: 1px solid rgba(71, 69, 69, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  margin: 1rem;
+  overflow: auto;
+  padding: 0.2rem;
+  // justify-content: space-between;
+  overflow: auto;
+  // :first-child {
+  //   max-width: 100%;
+  // }
+  // :nth-child(2) {
+  //   float: right;
+  // }
+  h2 {
+    text-align: left;
+    margin: 0.4rem;
+    width: 80%;
+    
+  }
+}
+
+.goal_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+
+  p {
+    margin: 0.4rem;
+  }
   button {
     width: 2rem;
   }

@@ -1,20 +1,21 @@
 .notification_item {
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
   background-color: #ffffff;
-
+  color: black;
   border-radius: 10px;
   overflow: hidden;
   margin: 0 0 20px 0;
   animation: SlideLeft 0.4s;
   animation-fill-mode: forwards;
   width: 300px;
+  text-align: center;
 }
 .notification_item.success {
-  box-shadow: 0 0 10px rgba(122, 224, 221, 0.4);
+  box-shadow: 0 0 10px rgba(17, 215, 146, 0.7);
 }
 
 .notification_item.error {
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
 }
 
 @keyframes SlideLeft {
