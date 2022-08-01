@@ -16,7 +16,7 @@ const Header = () => {
   };
   return (
     <header className="header">
-        <h2>Goal Setter</h2>
+        <h2>Set goals</h2>
       <div>
         <ul>
           {user ? (
