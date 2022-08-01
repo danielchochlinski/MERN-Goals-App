@@ -33,7 +33,8 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      isAdmin: user.isAdmin,
+      token: generateToken(user._id, user.isAdmin),
     });
   } else {
     res.status(400);
@@ -53,7 +54,8 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-      token: generateToken(user.id),
+      isAdmin: user.isAdmin,
+      token: generateToken(user.id, user.isAdmin),
     });
   } else {
     res.status(400);
@@ -76,8 +78,8 @@ const updateUser = asyncHandler(async (req, res) => {
 });
 
 //Generate GWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+const generateToken = (id, admin) => {
+  return jwt.sign({ id, admin }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };

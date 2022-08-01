@@ -8,7 +8,9 @@ const {
 } = require("../controller/goal");
 const { auth } = require("../middleware/authMiddleware");
 
-router.get("/", auth, getGoals);
+router.get("/", (req, res) => {
+  res.send({ message: "hey" });
+});
 
 router.post("/", auth, setGoal);
 

@@ -24,6 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/goals", require("./routes/goals"));
 app.use("/api/users", require("./routes/users"));
 
+//admin
+app.use("/admin", require("./routes/admin"))
+
 //serve client
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
