@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const BASE_URL = "https://goal-set-app.herokuapp.com//api/users/";
+const API_URL = "api/users/";
 
 //register
 const register = async (userData) => {
-  const response = await axios.post(BASE_URL, userData);
+  const response = await axios.post(API_URL, userData);
   console.log(response);
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
@@ -19,7 +19,7 @@ const logout = () => {
 
 const login = async (userData) => {
   try {
-    const response = await axios.post(BASE_URL + "login", userData);
+    const response = await axios.post(API_URL + "login", userData);
     console.log(response);
 
     if (response.data) {

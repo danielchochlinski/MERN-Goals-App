@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://goal-set-app.herokuapp.com/api/goals/";
+const API_URL = "/api/goals/";
 
 const createGoal = async (goalData, token) => {
   const config = {
@@ -9,7 +9,7 @@ const createGoal = async (goalData, token) => {
     },
   };
 
-  const response = await axios.post(BASE_URL, goalData, config);
+  const response = await axios.post(API_URL, goalData, config);
 
   return response.data;
 };
@@ -22,7 +22,7 @@ const getGoals = async (token) => {
     },
   };
 
-  const response = await axios.get(BASE_URL, config);
+  const response = await axios.get(API_URL, config);
 
   return response.data;
 };
@@ -35,7 +35,7 @@ const deleteGoal = async (goalId, token) => {
     },
   };
 
-  const response = await axios.delete(BASE_URL + goalId, config);
+  const response = await axios.delete(API_URL + goalId, config);
 
   return response.data;
 };
@@ -47,7 +47,7 @@ const updateGoal = async (goalId, token) => {
     },
   };
 
-  const response = await axios.put(BASE_URL + goalId, config);
+  const response = await axios.put(API_URL + goalId, config);
 
   return response.data;
 };
@@ -56,7 +56,7 @@ const goalService = {
   createGoal,
   getGoals,
   deleteGoal,
-  updateGoal
+  updateGoal,
 };
 
 export default goalService;
